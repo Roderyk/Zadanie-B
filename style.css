@@ -1,0 +1,12 @@
+div.wlacznik {
+background-color: blue;
+border: 1px, solid, black;
+width: 150px;
+height: 150px;
+float: left;
+margin: 10px;
+}
+.licznik {
+    display: block;
+    float: left;
+}
