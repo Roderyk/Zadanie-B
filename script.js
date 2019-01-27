@@ -85,6 +85,7 @@ let alfabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", 
 let slowo = "";
 
 let liczbaSlow = Math.floor(Math.random() * 100);
+let licznikKlik;
 for (let i = 0; i <= liczbaSlow; i++) {
     for (let i = 0; i <= dlugoscSlowa - 1; i++) {
         let wybranaLiteraI = Math.floor(Math.random() * alfabet.length);
@@ -94,9 +95,47 @@ for (let i = 0; i <= liczbaSlow; i++) {
     }
 
     let liSlowo = document.createElement("li");
-    liSlowo.innerHTML = slowo
+    liSlowo.innerHTML = slowo;
+    liSlowo.onclick = policzF;
     console.log(liSlowo);
     console.log(listaSlowa);
     listaSlowa.appendChild(liSlowo);
+    licznikKlik = document.createElement("span");
+    var spanGodzina = document.createElement("span");
+    let liczenieKlikniec = 0;
+    licznikKlik.innerHTML = " " + liczenieKlikniec;
+    liSlowo.appendChild(licznikKlik);
+    liSlowo.appendChild(spanGodzina);
     slowo = "";
+}
+
+function policzF() {
+    var child = this.childNodes[1];
+    var child2 = this.lastChild;
+    var liczenieKlikniec = parseInt(child.textContent);
+    var godzina = new Date();
+    liczenieKlikniec += 1;
+    child.innerHTML = " " + liczenieKlikniec;
+    child2.innerHTML = " Godzina: " + godzina.getHours() + ' : ' + godzina.getMinutes() + ' : ' + godzina.getSeconds() + ' : ' + godzina.getMilliseconds();
+}
+
+//zadanie 4
+const buttonGenerujTabela = document.querySelector("#generujTabele")
+var tabZadanie4 = document.querySelector("#tableZad4")
+buttonGenerujTabela.onclick = FgenerujTabela;
+
+function FgenerujTabela() {
+    var liczbaKolumn = document.querySelector("#liczbaKolumn").value;
+    var liczbaWierszy = document.querySelector("#liczbaWierszy").value;
+    let zmiennaTemp = 0
+
+for (let i = 0; i <= liczbaWierszy - 1; i++) {
+    let nowyWiersz = tabZadanie4.insertRow();
+    for (let i= 0; i <= liczbaKolumn -1; i++) {
+        let nowaKomorka = nowyWiersz.insertCell();
+        let nowyTekst = document.createTextNode(Math.random());
+        nowaKomorka.appendChild(nowyTekst);
+        let nowyTekstWartosc = parseInt(nowyTekst);
+    }
+}
 }

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,20 +8,28 @@
     <title>Document</title>
     <link rel="Stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="wlacznik" id="wlacznik1" data-on="false"></div>
     <div class="wlacznik" id="wlacznik2" data-on="false"></div>
     <div class="wlacznik" id="wlacznik3" data-on="false"></div>
     <input type="text" id="licznik" class="licznik">
-<div>
-    Podaj długość tablicy: <input type="text" class="dTalica" id="dTablica">
-    <input type="button" value="Generuj" id="generujTablica">
-</div>
+    <div>
+        Podaj długość tablicy: <input type="text" class="dTalica" id="dTablica">
+        <input type="button" value="Generuj" id="generujTablica">
+    </div>
     <div>To jest tablica z zadania 2:</div>
     <div class="tabelaZad2" id="tabelaZad2"></div>
-<div>To jest lista do zadania 3:</div>
+    <div>To jest lista do zadania 3:</div>
     <ul id="slowaLista">
     </ul>
+    <div id="zad4">
+        <input type="text" id="liczbaKolumn" placeholder="Podaj liczbę kolumn:">
+        <input type="text" id="liczbaWierszy" placeholder="Podaj liczbę wierszy">
+        <input type="button" id="generujTabele" value="Generuj tabelę">
+        <table id="tableZad4"></table>
+    </div>
     <script src="./script.js"></script>
 </body>
+
 </html>
