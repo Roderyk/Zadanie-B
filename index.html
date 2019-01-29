@@ -10,24 +10,39 @@
 </head>
 
 <body>
-    <div class="wlacznik" id="wlacznik1" data-on="false"></div>
-    <div class="wlacznik" id="wlacznik2" data-on="false"></div>
-    <div class="wlacznik" id="wlacznik3" data-on="false"></div>
+    <h2>Zadanie 1</h2>
+    <div class="zad1">
+        <div class="wlacznik" id="wlacznik1" data-on="false"></div>
+        <div class="wlacznik" id="wlacznik2" data-on="false"></div>
+        <div class="wlacznik" id="wlacznik3" data-on="false"></div>
+    </div>
+    <span>Licznik włączonych pól:</span>
     <input type="text" id="licznik" class="licznik">
-    <div>
+    <h2>Zadanie 2</h2>
+    <div class="zad2">
         Podaj długość tablicy: <input type="text" class="dTalica" id="dTablica">
         <input type="button" value="Generuj" id="generujTablica">
     </div>
+
     <div>To jest tablica z zadania 2:</div>
     <div class="tabelaZad2" id="tabelaZad2"></div>
+    <h2>Zadanie 3</h2>
     <div>To jest lista do zadania 3:</div>
     <ul id="slowaLista">
     </ul>
+    <h2>Zadanie 4</h2>
     <div id="zad4">
         <input type="text" id="liczbaKolumn" placeholder="Podaj liczbę kolumn:">
         <input type="text" id="liczbaWierszy" placeholder="Podaj liczbę wierszy">
         <input type="button" id="generujTabele" value="Generuj tabelę">
         <table id="tableZad4"></table>
+    </div>
+    <h2>Zadanie 5</h2>
+    <div id="zad5">
+        <input type="button" id="nowyKlient" value="nowy klient">
+        <input type="button" id="obsluzKlienta" value="obsłuż klienta">
+        <ul id="listaOczekujacych"></ul>
+        <ul id="listaOperacji"></ul>
     </div>
     <script src="./script.js"></script>
 </body>

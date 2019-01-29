@@ -1,15 +1,22 @@
 div.wlacznik {
 background-color: blue;
 border: 1px, solid, black;
-width: 150px;
+width: 250px;
 height: 150px;
 float: left;
 margin: 10px;
+
+}
+div.zad1 {
+    display: inline;
+    float: none;
 }
 .licznik {
-    display: block;
-    float: left;
+    display: inline;
 }
 #tableZad4 {
     width: 100vw;
+}
+div.zad2 {
+    float: none;
 }

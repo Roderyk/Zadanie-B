@@ -127,15 +127,52 @@ buttonGenerujTabela.onclick = FgenerujTabela;
 function FgenerujTabela() {
     var liczbaKolumn = document.querySelector("#liczbaKolumn").value;
     var liczbaWierszy = document.querySelector("#liczbaWierszy").value;
-    let zmiennaTemp = 0
-
-for (let i = 0; i <= liczbaWierszy - 1; i++) {
-    let nowyWiersz = tabZadanie4.insertRow();
-    for (let i= 0; i <= liczbaKolumn -1; i++) {
-        let nowaKomorka = nowyWiersz.insertCell();
-        let nowyTekst = document.createTextNode(Math.random());
-        nowaKomorka.appendChild(nowyTekst);
-        let nowyTekstWartosc = parseInt(nowyTekst);
+    var tempNajwieksza = 1
+    var tempNajmniejsza = 100
+    var rodzicBig
+    var rodzicSmall
+    for (let i = 0; i <= liczbaWierszy - 1; i++) {
+        let nowyWiersz = tabZadanie4.insertRow();
+        for (let i = 0; i <= liczbaKolumn - 1; i++) {
+            let nowaKomorka = nowyWiersz.insertCell();
+            let nowyTekstZawartosc = 1 + Math.floor(Math.random() * 100);
+            let nowyTekst = document.createTextNode(nowyTekstZawartosc);
+            nowaKomorka.appendChild(nowyTekst);
+            if (nowyTekstZawartosc % 2 == 0) {
+                nowaKomorka.style.fontWeight = "bold";
+            }
+           if (nowyTekstZawartosc >= tempNajwieksza) {
+               tempNajwieksza = nowyTekstZawartosc;
+               rodzicBig = nowaKomorka;
+            }
+            if (nowyTekstZawartosc <= tempNajmniejsza) {
+                tempNajmniejsza = nowyTekstZawartosc;
+                rodzicSmall = nowaKomorka
+            }
+        }
     }
+    rodzicBig.style.color = "red";
+    rodzicSmall.style.color = "lime";
 }
+//Zadanie 5
+
+const BnowyKlient = document.querySelector("#nowyKlient");
+const BobsluzKlienta = document.querySelector("#obsluzKlienta");
+const listaOczekujacych = document.querySelector("#listaOczekujacych");
+const listaOperacji = document.querySelector("#listaOperacji");
+var licznkiKlientow = 0
+
+BnowyKlient.onclick = FnowyKlient
+BobsluzKlienta.onclick = FobsluzKlienta
+
+function FnowyKlient() {
+    let numerKlienta = licznkiKlientow += 1
+    let nowyKlientLI = document.createElement("li");
+    nowyKlientLI.innerHTML = "Numer klienta: " + numerKlienta;
+    listaOczekujacych.appendChild(nowyKlientLI)
+    //console.log(numerKlienta)
+}
+
+function FobsluzKlienta() {
+    console.log("obsluzklienta")
 }
