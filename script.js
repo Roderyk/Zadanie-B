@@ -141,9 +141,9 @@ function FgenerujTabela() {
             if (nowyTekstZawartosc % 2 == 0) {
                 nowaKomorka.style.fontWeight = "bold";
             }
-           if (nowyTekstZawartosc >= tempNajwieksza) {
-               tempNajwieksza = nowyTekstZawartosc;
-               rodzicBig = nowaKomorka;
+            if (nowyTekstZawartosc >= tempNajwieksza) {
+                tempNajwieksza = nowyTekstZawartosc;
+                rodzicBig = nowaKomorka;
             }
             if (nowyTekstZawartosc <= tempNajmniejsza) {
                 tempNajmniejsza = nowyTekstZawartosc;
@@ -166,13 +166,35 @@ BnowyKlient.onclick = FnowyKlient
 BobsluzKlienta.onclick = FobsluzKlienta
 
 function FnowyKlient() {
-    let numerKlienta = licznkiKlientow += 1
-    let nowyKlientLI = document.createElement("li");
-    nowyKlientLI.innerHTML = "Numer klienta: " + numerKlienta;
-    listaOczekujacych.appendChild(nowyKlientLI)
-    //console.log(numerKlienta)
+    let dlugoscKolejki = listaOczekujacych.getElementsByTagName("li").length;
+    if (dlugoscKolejki < 10) {
+        var numerKlienta = licznkiKlientow += 1
+        let nowyKlientLI = document.createElement("li");
+        let godzina = new Date;
+        nowyKlientLI.innerHTML = "Numer klienta: " + numerKlienta + " | Godzina dodania do kolejki: " + godzina.getHours() + ":" + godzina.getMinutes() + ":" + godzina.getSeconds();
+        listaOczekujacych.appendChild(nowyKlientLI)
+        let nowaOperacjaDodania = document.createElement("li");
+        nowaOperacjaDodania.innerHTML = "Dodanie klienta nr: " + numerKlienta + " | Godzina dodania do kolejki: " + godzina.getHours() + ":" + godzina.getMinutes() + ":" + godzina.getSeconds();
+        let ostatniaOperacja = listaOperacji.firstChild;
+        listaOperacji.insertBefore(nowaOperacjaDodania, ostatniaOperacja);
+    }
+    else {
+        let numerKlientaOczekuj = licznkiKlientow + 1
+        confirm("Dla klienta nr: " + numerKlientaOczekuj + " nie ma miejsca w kolejce.")
+    }
 }
-
 function FobsluzKlienta() {
-    console.log("obsluzklienta")
+    let dlugoscKolejki = listaOczekujacych.getElementsByTagName("li").length;
+    if (dlugoscKolejki >= 1) {
+        let pierwszyZKolejki = listaOczekujacych.firstChild;
+        let nowyNode = pierwszyZKolejki.cloneNode(true);
+        let godzina = new Date;
+        nowyNode.innerHTML = "Obsługa: " + nowyNode.textContent + " | Godzina rozpoczęcia obsługi: " + godzina.getHours() + ":" + godzina.getMinutes() + ":" + godzina.getSeconds();
+        let ostatniaOperacja = listaOperacji.firstChild;
+        listaOperacji.insertBefore(nowyNode, ostatniaOperacja);
+        listaOczekujacych.removeChild(pierwszyZKolejki);
+    }
+    else {
+        confirm("Nikt nie oczekuje na obsługę! - Idż na kawę.")
+    }
 }
