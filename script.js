@@ -60,8 +60,8 @@ function Fwlacznik3() {
     }
 }
 //Zadanie 2
-const generuj = document.querySelector("#generujTablica")
-
+const generuj = document.querySelector("#generujTablica");
+const divLiczbaPar = document.querySelector("#liczbaPar");
 generuj.onclick = Fgeneruj
 
 function Fgeneruj() {
@@ -69,17 +69,21 @@ function Fgeneruj() {
     console.log(dTablica);
     let arr = []
     arr.push(3)
+    let liczbaPar = 0
     for (let i = 1; i <= dTablica - 1; i++) {
         arr.push(arr[i - 1] + Math.floor(Math.random() * 7 - 3))
+        if (arr[i - 1] == arr[i]){
+            liczbaPar +=1
+        }
     }
     var divTablica = document.querySelector("#tabelaZad2")
     divTablica.innerHTML = arr;
+    console.log(liczbaPar);
+    divLiczbaPar.innerHTML = divLiczbaPar.textContent + liczbaPar + ", ";
 }
 //Zadanie 3
 
-var dlugoscSlowa = Math.floor(Math.random() * (10 - 4 + 1) + 4);
-console.log(dlugoscSlowa);
-
+var dlugoscSlowa 
 const listaSlowa = document.querySelector("#slowaLista");
 let alfabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "r", "s", "t", "u", "w", "x", "y", "z"];
 let slowo = "";
@@ -87,18 +91,16 @@ let slowo = "";
 let liczbaSlow = Math.floor(Math.random() * 100);
 let licznikKlik;
 for (let i = 0; i <= liczbaSlow; i++) {
+    dlugoscSlowa = Math.floor(Math.random() * (10 - 4 + 1) + 4);
     for (let i = 0; i <= dlugoscSlowa - 1; i++) {
         let wybranaLiteraI = Math.floor(Math.random() * alfabet.length);
         let wybranaLitera = alfabet[wybranaLiteraI];
         slowo += wybranaLitera
-        console.log(slowo)
     }
 
     let liSlowo = document.createElement("li");
     liSlowo.innerHTML = slowo;
     liSlowo.onclick = policzF;
-    console.log(liSlowo);
-    console.log(listaSlowa);
     listaSlowa.appendChild(liSlowo);
     licznikKlik = document.createElement("span");
     var spanGodzina = document.createElement("span");
