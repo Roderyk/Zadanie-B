@@ -66,24 +66,30 @@ generuj.onclick = Fgeneruj
 
 function Fgeneruj() {
     var dTablica = document.querySelector("#dTablica").value;
-    console.log(dTablica);
-    let arr = []
-    arr.push(3)
-    let liczbaPar = 0
-    for (let i = 1; i <= dTablica - 1; i++) {
-        arr.push(arr[i - 1] + Math.floor(Math.random() * 7 - 3))
-        if (arr[i - 1] == arr[i]){
-            liczbaPar +=1
-        }
+    //console.log(dTablica);
+    if (isNaN(dTablica) == true) {
+        document.querySelector("#dTablica").value = null;
+        confirm("Proszę wpisać poprawną liczbę")
     }
-    var divTablica = document.querySelector("#tabelaZad2")
-    divTablica.innerHTML = arr;
-    console.log(liczbaPar);
-    divLiczbaPar.innerHTML = divLiczbaPar.textContent + liczbaPar + ", ";
+    else {
+        let arr = []
+        arr.push(3)
+        let liczbaPar = 0
+        for (let i = 1; i <= dTablica - 1; i++) {
+            arr.push(arr[i - 1] + Math.floor(Math.random() * 7 - 3))
+            if (arr[i - 1] == arr[i]) {
+                liczbaPar += 1
+            }
+        }
+        var divTablica = document.querySelector("#tabelaZad2")
+        divTablica.innerHTML = arr;
+        console.log(liczbaPar);
+        divLiczbaPar.innerHTML = divLiczbaPar.textContent + liczbaPar + ", ";
+    }
 }
 //Zadanie 3
 
-var dlugoscSlowa 
+var dlugoscSlowa
 const listaSlowa = document.querySelector("#slowaLista");
 let alfabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "r", "s", "t", "u", "w", "x", "y", "z"];
 let slowo = "";
@@ -129,32 +135,37 @@ buttonGenerujTabela.onclick = FgenerujTabela;
 function FgenerujTabela() {
     var liczbaKolumn = document.querySelector("#liczbaKolumn").value;
     var liczbaWierszy = document.querySelector("#liczbaWierszy").value;
-    var tempNajwieksza = 1
-    var tempNajmniejsza = 100
-    var rodzicBig
-    var rodzicSmall
-    for (let i = 0; i <= liczbaWierszy - 1; i++) {
-        let nowyWiersz = tabZadanie4.insertRow();
-        for (let i = 0; i <= liczbaKolumn - 1; i++) {
-            let nowaKomorka = nowyWiersz.insertCell();
-            let nowyTekstZawartosc = 1 + Math.floor(Math.random() * 100);
-            let nowyTekst = document.createTextNode(nowyTekstZawartosc);
-            nowaKomorka.appendChild(nowyTekst);
-            if (nowyTekstZawartosc % 2 == 0) {
-                nowaKomorka.style.fontWeight = "bold";
-            }
-            if (nowyTekstZawartosc >= tempNajwieksza) {
-                tempNajwieksza = nowyTekstZawartosc;
-                rodzicBig = nowaKomorka;
-            }
-            if (nowyTekstZawartosc <= tempNajmniejsza) {
-                tempNajmniejsza = nowyTekstZawartosc;
-                rodzicSmall = nowaKomorka
+    if (isNaN(liczbaKolumn) == true || isNaN(liczbaWierszy) == true) {
+        confirm("Proszę podać prawidłową liczbę kolumn i/lub wierszy.")
+    }
+    else {
+        var tempNajwieksza = 1
+        var tempNajmniejsza = 100
+        var rodzicBig
+        var rodzicSmall
+        for (let i = 0; i <= liczbaWierszy - 1; i++) {
+            let nowyWiersz = tabZadanie4.insertRow();
+            for (let i = 0; i <= liczbaKolumn - 1; i++) {
+                let nowaKomorka = nowyWiersz.insertCell();
+                let nowyTekstZawartosc = 1 + Math.floor(Math.random() * 100);
+                let nowyTekst = document.createTextNode(nowyTekstZawartosc);
+                nowaKomorka.appendChild(nowyTekst);
+                if (nowyTekstZawartosc % 2 == 0) {
+                    nowaKomorka.style.fontWeight = "bold";
+                }
+                if (nowyTekstZawartosc >= tempNajwieksza) {
+                    tempNajwieksza = nowyTekstZawartosc;
+                    rodzicBig = nowaKomorka;
+                }
+                if (nowyTekstZawartosc <= tempNajmniejsza) {
+                    tempNajmniejsza = nowyTekstZawartosc;
+                    rodzicSmall = nowaKomorka
+                }
             }
         }
+        rodzicBig.style.color = "red";
+        rodzicSmall.style.color = "lime";
     }
-    rodzicBig.style.color = "red";
-    rodzicSmall.style.color = "lime";
 }
 //Zadanie 5
 
